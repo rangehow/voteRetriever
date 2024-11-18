@@ -1,0 +1,14 @@
+[
+    {
+        "model_name": "ISOISS/jina-embeddings-v3-tei",
+        "embedding_dim": 1024
+    },
+    {
+        "model_name": "Alibaba-NLP/gte-large-en-v1.5",
+        "embedding_dim": 1024
+    },
+    {
+        "model_name": "dunzhang/stella_en_400M_v5",
+        "embedding_dim": 1024
+    }
+]
