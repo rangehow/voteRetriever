@@ -1,9 +1,9 @@
 import json
 from module.data import load_data
 from module.embeddings import Emebeddings
-from ipdb import set_trace as bp
-from module.dimension_reduction._umap import UMAP
-from loguru import logger
+# from ipdb import set_trace as bp
+# from module.dimension_reduction._umap import UMAP
+# from loguru import logger
 
 dataset_name = "allenai/c4"
 if __name__ == "__main__":
