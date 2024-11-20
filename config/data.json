@@ -2,6 +2,7 @@
     "allenai/c4": {
         "path": "allenai/c4",
         "name": "en",
-        "cache_dir": "data/c4.json"
+        "num_rows": 1000,
+        "text_key": "text"
     }
 }

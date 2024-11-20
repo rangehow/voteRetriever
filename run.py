@@ -4,6 +4,7 @@ from module.embeddings import Emebeddings
 from ipdb import set_trace as bp
 from module.dimension_reduction._umap import UMAP
 from loguru import logger
+import numpy as np
 
 dataset_name = "allenai/c4"
 if __name__ == "__main__":
