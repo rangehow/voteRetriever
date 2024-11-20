@@ -31,7 +31,10 @@ if __name__ == "__main__":
     # print(len(sentence_embeddings))
     sentence_embeddings = np.vstack(sentence_embeddings)
     umap = UMAP()  # 降维到二维
-    labels = np.random.randint(0, 3, len(sentence_embeddings))
+    labels=[]
+    for idx, model in enumerate(model_config):
+        embeddings = sentence_embeddings[idx]
+        labels.extend([idx] * len(embeddings)) 
     umap.plot(sentence_embeddings,labels)
       
     # # TODO 
