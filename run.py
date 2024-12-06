@@ -30,12 +30,12 @@ if __name__ == "__main__":
         bp()
         # 使用 UMAP 进行降维
     # print(len(sentence_embeddings))
-    sentence_embeddings = np.vstack(sentence_embeddings)
     umap = UMAP()  # 降维到二维
     labels=[]
     for idx, model in enumerate(model_config):
         embeddings = sentence_embeddings[idx]
         labels.extend([idx] * len(embeddings)) 
+    sentence_embeddings = np.vstack(sentence_embeddings)
     umap.plot(sentence_embeddings,labels)
       
     # # TODO 
