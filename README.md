@@ -1,3 +1,5 @@
+## 2024.12.22
+  原来的代码是使用的类似llama这种模型，对数据进行tokenizer，然后得到hidden_states作为模型的特征，存下来计算后续的相似分数，但是现在使用的是嵌入模型，我直接将encode后的embedding当作特征存储下来，不知道这样行不行，然后计算相关性分数，但是得到的分数非常奇怪，然后再去仔细跑一下提取特征的代码，看一看，就报错了,还在改
 ## 2024.12.3
   代码跑通了，模型保存在tasks.py中，数据集使用的是minhuh/prh，先运行platonic-rep/extract_features.py提取特征，保存为platonic-rep/results/features/minhuh/prh/wit_1024/huggyllama_llama-30b_pool-avg.pt这样的文件，然后运行platonic-rep/measure_alignment.py进行对齐分数的计算，将每一对模型的对齐分数和相对应的索引进行保存，保存为platonic-rep/results/alignment/minhuh/prh/val/language_pool-avg_prompt-False_vision_pool-cls_prompt-False/mutual_knn_k10.npy
   试了一个例子，是llama-30b和vit_tiny_patch16_224之间的对齐分数{'scores': array([[0.12714845]]), 'indices': array([[[11., 27.]]])}
