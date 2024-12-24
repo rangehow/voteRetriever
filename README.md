@@ -1,3 +1,5 @@
+## 2024.12.25
+  修改了计算分数部分，这样计算分数和提取特征就不会因为模型不同报错了，得到的分数正常多了，模型自己和自己之间的相似性分数为1，Alibaba-NLP_gte-large-en-v1.5和ISOISS_jina-    embeddings-v3-tei之间的分数为0.55299997，下一步就是对收集好的一些模型跑一下，都相互计算出分数，然后画图
 ## 2024.12.24
   修改了保存特征那部分，使用https://huggingface.co/ISOISS/jina-embeddings-v3-tei 上面教的使用模型的方法，提取outputs["hidden_states"]，并保存，Alibaba-NLP_gte-large-en-v1.5和ISOISS_jina-embeddings-v3-tei都没报错，现在直接运行run.py就可以直接调用modle里面的文件和函数，就可以，测量对齐分数还需要进一步修改，不知道分数奇不奇怪
 ## 2024.12.22
