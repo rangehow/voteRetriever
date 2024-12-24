@@ -1,5 +1,5 @@
 ## 2024.12.24
-  修改了保存特征那部分，使用https://huggingface.co/ISOISS/jina-embeddings-v3-tei上面教的使用模型的方法，提取outputs["hidden_states"]，并保存，Alibaba-NLP_gte-large-en-v1.5和ISOISS_jina-embeddings-v3-tei都没报错，现在直接运行run.py就可以直接调用modle里面的文件和函数，就可以，测量对齐分数还需要进一步修改，不知道分数奇不奇怪
+  修改了保存特征那部分，使用https://huggingface.co/ISOISS/jina-embeddings-v3-tei 上面教的使用模型的方法，提取outputs["hidden_states"]，并保存，Alibaba-NLP_gte-large-en-v1.5和ISOISS_jina-embeddings-v3-tei都没报错，现在直接运行run.py就可以直接调用modle里面的文件和函数，就可以，测量对齐分数还需要进一步修改，不知道分数奇不奇怪
 ## 2024.12.22
   原来的代码是使用的类似llama这种模型，对数据进行tokenizer，然后得到hidden_states作为模型的特征，存下来计算后续的相似分数，但是现在使用的是嵌入模型，我直接将encode后的embedding当作特征存储下来，不知道这样行不行，然后计算相关性分数，但是得到的分数非常奇怪，然后再去仔细跑一下提取特征的代码，看一看，就报错了,还在改
 ## 2024.12.3
