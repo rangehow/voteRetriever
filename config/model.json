@@ -2,17 +2,20 @@
     {
         "model_name": "nvidia/NV-Embed-v2",
         "language": "en",
-        "Average score: ":	72.31
+        "Average score: ":	72.31,
+        "local_dir":"/mnt/dolphinfs/hdd_pool/docker/user/hadoop-aipnlp/ruanjunhao04/models/NV-Embed-v2/main"
     },
     {
         "model_name": "BAAI/bge-en-icl",
         "language": "en",
-        "Average score: ":	71.67
+        "Average score: ":	71.67,
+        "local_dir":"/mnt/dolphinfs/hdd_pool/docker/user/hadoop-aipnlp/ruanjunhao04/models/bge-en-icl"
     },
     {
         "model_name": "dunzhang/stella_en_1.5B_v5",
         "language": "en",
-        "Average score: ":	71.19
+        "Average score: ":	71.19,
+        "local_dir":"/mnt/hdfs/zw04mlnn01/checkpoint/llm_platform/model/dunzhang/stella_en_1.5B_v5/main"
     },
     {
         "model_name": "Salesforce/SFR-Embedding-2_R",
@@ -22,7 +25,8 @@
     {
         "model_name": "Alibaba-NLP/gte-Qwen2-7B-instruct",
         "language": "en",
-        "Average score: ": 70.24
+        "Average score: ": 70.24,
+        "Dimensions":3584
     },
     {
         "model_name": "dunzhang/stella_en_400M_v5",
@@ -32,12 +36,14 @@
     {
         "model_name": "BAAI/bge-multilingual-gemma2",
         "language": "en",
-        "Average score: ": 69.88
+        "Average score: ": 69.88,
+        "local_dir":"/mnt/dolphinfs/hdd_pool/docker/user/hadoop-aipnlp/ruanjunhao04/models/bge-multilingual-gemma2"
     },
     {
         "model_name": "nvidia/NV-Embed-v1",
         "language": "en",
-        "Average score: ": 69.32
+        "Average score: ": 69.32,
+        "local_dir":"/mnt/dolphinfs/hdd_pool/docker/user/hadoop-aipnlp/ruanjunhao04/models/NV-Embed-v1/main"
     },
     {
         "model_name": "Linq-AI-Research/Linq-Embed-Mistral",
@@ -52,7 +58,8 @@
     {
         "model_name": "zeta-alpha-ai/Zeta-Alpha-E5-Mistral",
         "language": "en",
-        "Average score: ": 67.55
+        "Average score: ": 67.55,
+        "local_dir":"/mnt/dolphinfs/hdd_pool/docker/user/hadoop-aipnlp/ruanjunhao04/models/Zeta-Alpha-E5-Mistral/main"
     },
     {
         "model_name": "Alibaba-NLP/gte-Qwen1.5-7B-instruct",
@@ -65,6 +72,11 @@
         "Average score: ": 67.16
     },
     {
+        "model_name":"GritLM/GritLM-7B",
+        "language": "en",
+        "Average score: ": 66.58
+    },
+    {
         "model_name": "Haon-Chen/speed-embedding-7b-instruct",
         "language": "en",
         "Average score: ": 	66.51
@@ -75,14 +87,10 @@
         "Average score: ": 66.4
     },
     {
-        "model_name": "GritLM/GritLM-8x7B",
-        "language": "en",
-        "Average score: ": 65.66
-    },
-    {
         "model_name": "jinaai/jina-embeddings-v3",
         "language": "en",
-        "Average score: ": 65.51
+        "Average score: ": 65.51,
+        "local_dir":"/mnt/dolphinfs/hdd_pool/docker/user/hadoop-aipnlp/ruanjunhao04/models/jina-embeddings-v3/main"
     },
     {
         "model_name": "pingkeest/learning2_model",
@@ -92,7 +100,8 @@
     {
         "model_name": "Alibaba-NLP/gte-large-en-v1.5",
         "language": "en",
-        "Average score: ": 65.39
+        "Average score: ": 65.39,
+        "local_dir":"/mnt/dolphinfs/hdd_pool/docker/user/hadoop-aipnlp/ruanjunhao04/models/gte-large-en-v1.5/main"
     },
     {
         "model_name": "McGill-NLP/LLM2Vec-Meta-Llama-3-8B-Instruct-mntp-supervised",
@@ -102,7 +111,8 @@
     {
         "model_name": "jxm/cde-small-v1",
         "language": "en",
-        "Average score: ": 65
+        "Average score: ": 65,
+        "local_dir":"/mnt/dolphinfs/hdd_pool/docker/user/hadoop-aipnlp/ruanjunhao04/models/cde-small-v1/main"
     },
     {
         "model_name": "McGill-NLP/LLM2Vec-Mistral-7B-Instruct-v2-mntp-supervised",
@@ -120,7 +130,7 @@
         "Average score: ": 64.68
     },
     {
-        "model_name": "mixedbread-ai/mxbai-embed-large-v11",
+        "model_name": "mixedbread-ai/mxbai-embed-large-v1",
         "language": "en",
         "Average score: ": 64.68
     },
@@ -152,7 +162,8 @@
     {
         "model_name": "Alibaba-NLP/gte-base-en-v1.5",
         "language": "en",
-        "Average score: ": 64.11
+        "Average score: ": 64.11,
+        "local_dir":"/mnt/dolphinfs/hdd_pool/docker/user/hadoop-aipnlp/ruanjunhao04/models/gte-base-en-v1.5/main"
     },
     {
         "model_name": "Cohere/Cohere-embed-multilingual-v3.0",
@@ -212,12 +223,14 @@
     {
         "model_name": "nomic-ai/nomic-embed-text-v1",
         "language": "en",
-        "Average score: ": 62.39
+        "Average score: ": 62.39,
+        "local_dir":"/mnt/dolphinfs/hdd_pool/docker/user/hadoop-aipnlp/ruanjunhao04/models/nomic-ai/nomic-embed-text-v1/main"
     },
     {
         "model_name": "nomic-ai/nomic-embed-text-v1.5",
         "language": "en",
-        "Average score: ": 62.28
+        "Average score: ": 62.28,
+        "local_dir":"/mnt/dolphinfs/hdd_pool/docker/user/hadoop-aipnlp/ruanjunhao04/models/nomic-ai/nomic-embed-text-v1.5/main"
     },
     {
         "model_name": "intfloat/e5-large-v2",
@@ -228,11 +241,6 @@
         "model_name": "BAAI/bge-small-en-v1.5",
         "language": "en",
         "Average score: ": 62.17
-    },
-    {
-        "model_name": "nomic-ai/nomic-embed-text-v1.5",
-        "language": "en",
-        "Average score: ": 	61.96
     },
     {
         "model_name": "McGill-NLP/LLM2Vec-Sheared-LLaMA-mntp-supervised",
@@ -272,7 +280,8 @@
     {
         "model_name": "Alibaba-NLP/gte-multilingual-base",
         "language": "en",
-        "Average score: ": 	61.4
+        "Average score: ": 	61.4,
+        "local_dir":"/mnt/dolphinfs/hdd_pool/docker/user/hadoop-aipnlp/ruanjunhao04/models/gte-multilingual-base/main"
     },
     {
         "model_name": "nomic-ai/nomic-embed-text-v1-ablated",
@@ -283,11 +292,6 @@
         "model_name": "thenlper/gte-small0",
         "language": "en",
         "Average score: ": 61.36
-    },
-    {
-        "model_name": "nomic-ai/nomic-embed-text-v1.5",
-        "language": "en",
-        "Average score: ": 61.04
     },
     {
         "model_name": "intfloat/multilingual-e5-large",
@@ -307,6 +311,7 @@
     {
         "model_name": "jinaai/jina-embeddings-v2-base-en",
         "language": "en",
-        "Average score: ": 60.38
+        "Average score: ": 60.38,
+        "local_dir":"/mnt/dolphinfs/hdd_pool/docker/user/hadoop-aipnlp/ruanjunhao04/models/jina-embeddings-v2-base-en/main"
     }
 ]
