@@ -79,4 +79,57 @@ def extract_llm_features(filenames, texts, args):
         gc.collect()
 
     return
+def load_and_average_features(filenames):
+    all_feats = []
+    
+    for filename in filenames:
+        if os.path.exists(filename):
+            print(f"Loading features from {filename}")
+            feature_data = torch.load(filename)
+            feats = feature_data["feats"]  
+            all_feats.append(feats)
+        else:
+            print(f"File not found: {filename}")
+
+    return all_feats
+
+
+def compute_mean_embeddings(features):
+    """
+    计算每组嵌入的均值
+    :param features: List[Tensor or list]，每组嵌入可能是列表或张量
+    :return: Tensor，形状为 [n_models, D]，每组嵌入的均值
+    """
+    mean_features = []
+    for feat in features:
+        # 如果 feat 是嵌套列表，将其转换为二维列表或张量
+        if isinstance(feat, list):
+            feat = torch.tensor(feat)  # 转换为 PyTorch 张量
+
+        # 确保 feat 是二维张量
+        if feat.dim() == 1:
+            feat = feat.unsqueeze(0)  # 如果是 1D 张量，扩展为 2D
+
+        # 计算均值
+        mean_feat = torch.mean(feat, dim=0)  # 对每组嵌入求均值
+        mean_features.append(mean_feat)
+    
+    return torch.stack(mean_features)  # 合并成一个大张量
+
+
+
+def pad_embeddings(features, target_dim):
+    """
+    对嵌入进行补零，使其对齐到 target_dim
+    :param features: List[Tensor]，每个张量表示一组嵌入
+    :param target_dim: int，目标维度
+    :return: List[Tensor]，补零后的嵌入
+    """
+    padded_features = []
+    for feat in features:
+        if feat.shape[1] < target_dim:  # 如果维度不足，补零
+            padding = torch.zeros(feat.shape[0], target_dim - feat.shape[1], device=feat.device)
+            feat = torch.cat((feat, padding), dim=1)
+        padded_features.append(feat)
+    return padded_features
 

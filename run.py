@@ -5,7 +5,7 @@ from ipdb import set_trace as bp
 from module.dimension_reduction._umap import UMAP
 from loguru import logger
 import numpy as np
-from module.measure_feature import extract_llm_features
+from module.measure_feature import extract_llm_features,load_and_average_features,compute_mean_embeddings,pad_embeddings
 from module.measure_alignment import compute_alignment
 import os
 import argparse
@@ -55,46 +55,63 @@ if __name__ == "__main__":
     print(args.modality)
     llm_models = get_models(args.modelset,args.modality)
     extract_llm_features(llm_models, content_list, args)
-    if not args.precise:
-        torch.set_float32_matmul_precision('high')
-        torch.backends.cuda.matmul.allow_tf32 = True
-        torch.backends.cudnn.allow_tf32 = True
-        torch.backends.cudnn.benchmark = True
-    save_path = module.utils.to_alignment_filename(
-            args.output_dir,
-            args.modality_x, args.pool_x, args.prompt_x,
-            args.modality_y, args.pool_y, args.prompt_y,
-            args.metric, args.topk
-    )
+    directory_path = '/mnt/ljy/metb/voteRetriever/results/features'
 
-    if os.path.exists(save_path) and not args.force_remake:
-        print(f"alignment already exists at {save_path}")
-        exit()
+    filenames = [os.path.join(directory_path, fname) for fname in os.listdir(directory_path)]
+    all_feats = load_and_average_features(filenames)
+    
+    target_dim = 1024
+    features = pad_embeddings(all_feats, target_dim)
+    mean_features  = compute_mean_embeddings(features)
+    print( mean_features )
+    print(mean_features.shape)
+    umap = UMAP()
+    
+    labels=[]
+    for idx in range(len(filenames)):
+        labels.extend([idx]) 
+    print(len(labels))
+    umap.plot(mean_features, labels)
+    # if not args.precise:
+    #     torch.set_float32_matmul_precision('high')
+    #     torch.backends.cuda.matmul.allow_tf32 = True
+    #     torch.backends.cudnn.allow_tf32 = True
+    #     torch.backends.cudnn.benchmark = True
+    # save_path = module.utils.to_alignment_filename(
+    #         args.output_dir,
+    #         args.modality_x, args.pool_x, args.prompt_x,
+    #         args.modality_y, args.pool_y, args.prompt_y,
+    #         args.metric, args.topk
+    # )
 
-    models_x = llm_models 
-    models_y = llm_models 
+    # if os.path.exists(save_path) and not args.force_remake:
+    #     print(f"alignment already exists at {save_path}")
+    #     exit()
+
+    # models_x = llm_models 
+    # models_y = llm_models 
   
-    models_x_paths = [module.utils.to_feature_filename(args.input_dir, m) for m in models_x]
-    models_y_paths = [module.utils.to_feature_filename(args.input_dir, m) for m in models_y]
-    print(models_x_paths)
-    for fn in models_x_paths + models_y_paths:
-        assert os.path.exists(fn), fn
+    # models_x_paths = [module.utils.to_feature_filename(args.input_dir, m) for m in models_x]
+    # models_y_paths = [module.utils.to_feature_filename(args.input_dir, m) for m in models_y]
+    # print(models_x_paths)
+    # for fn in models_x_paths + models_y_paths:
+    #     assert os.path.exists(fn), fn
     
-    print(f"metric: \t{args.metric}")
-    if 'knn' in args.metric:
-        print(f"topk:\t{args.topk}")
+    # print(f"metric: \t{args.metric}")
+    # if 'knn' in args.metric:
+    #     print(f"topk:\t{args.topk}")
     
-    print(f"models_x_paths:")    
-    pprint(models_x_paths)
-    print("\nmodels_y_paths:")
-    pprint(models_y_paths)
+    # print(f"models_x_paths:")    
+    # pprint(models_x_paths)
+    # print("\nmodels_y_paths:")
+    # pprint(models_y_paths)
     
-    print('\nmeasuring alignment')
-    os.makedirs(args.output_dir_alignment, exist_ok=True)
-    alignment_scores, alignment_indices = compute_alignment(models_x_paths, models_y_paths, args.metric,args.topk)
+    # print('\nmeasuring alignment')
+    # os.makedirs(args.output_dir_alignment, exist_ok=True)
+    # alignment_scores, alignment_indices = compute_alignment(models_x_paths, models_y_paths, args.metric,args.topk)
 
-    os.makedirs(os.path.dirname(save_path), exist_ok=True)
-    np.save(save_path, {"scores": alignment_scores, "indices": alignment_indices})
-    print({"scores": alignment_scores, "indices": alignment_indices})
-    print(f"saved to {save_path}")
+    # os.makedirs(os.path.dirname(save_path), exist_ok=True)
+    # np.save(save_path, {"scores": alignment_scores, "indices": alignment_indices})
+    # print({"scores": alignment_scores, "indices": alignment_indices})
+    # print(f"saved to {save_path}")
         
