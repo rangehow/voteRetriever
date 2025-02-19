@@ -2,12 +2,12 @@
 使用30万条数据混合平均多教师模型的MSE损失，得到的正确率达到0.611，用单个模型训练的时候，比0.61高，可以达到0.67（使用的是第一种蒸馏方法，选取一个小的学生模型的那个）
 ## 2025.2.17
 对于多教师模型，混合loss修改成功
+
 class MSELoss(nn.Module):
     def __init__(self, model: SentenceTransformer) -> None:
         super().__init__()
         self.model = model
         self.loss_fct = nn.MSELoss()
-
     def forward(self, sentence_features: Iterable[dict[str, Tensor]], labels:Tensor ) -> Tensor:
         loss = 0
         embeddings = self.model(sentence_features[0])["sentence_embedding"]
