@@ -4,10 +4,12 @@
 对于多教师模型，混合loss修改成功
 
 class MSELoss(nn.Module):
+
     def __init__(self, model: SentenceTransformer) -> None:
         super().__init__()
         self.model = model
         self.loss_fct = nn.MSELoss()
+        
     def forward(self, sentence_features: Iterable[dict[str, Tensor]], labels:Tensor ) -> Tensor:
         loss = 0
         embeddings = self.model(sentence_features[0])["sentence_embedding"]
